@@ -34,4 +34,5 @@ const getLIS = (array) => {
     let i = 1, j =0;
 }
 
+// Call
 console.log(getLongestIncreasingSubsequence([3,4,-1,5,8,2,3,12,7,9,10 ]));
