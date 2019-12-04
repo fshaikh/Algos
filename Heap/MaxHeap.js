@@ -15,7 +15,7 @@ class MaxHeap extends BinaryHeap{
     constructor(array = [], lazy, compareFn = null, ) {
         super(array,lazy,compareFn);
         // if array is non-empty and we want to do the heap now, do the heap
-        if (array.length > 1 && !lazy) {
+        if (array.length >= 1 && !lazy) {
             this.doMaxHeap();
             this._isHeap = true;
         }

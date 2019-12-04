@@ -155,7 +155,7 @@ class BinaryHeap {
     }
 
     _isValidState() {
-        return this._array.length > 1 && this._isHeap;
+        return this._array.length >= 1 && this._isHeap;
     }
 
     _invokeCompareFn(a, b) {

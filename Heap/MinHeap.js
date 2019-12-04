@@ -94,8 +94,10 @@ class MinHeap extends BinaryHeap {
 
 module.exports = MinHeap;
 
-const minHeap = new MinHeap([4,5,2,3,1],false);
-console.log(minHeap.getArray());
+const minHeap = new MinHeap([4,5,2,1,1],false);
+console.log(minHeap.extractMin());
+console.log(minHeap.extractMin());
+console.log(minHeap.extractMin());
 
 
 

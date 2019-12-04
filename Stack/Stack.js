@@ -32,38 +32,54 @@ class Stack {
         return this._storage.length;
     }
 
-    [Symbol.iterator]() {
-        let context = this;
-        return {
-            next: function(){
-                let value = context.pop();
-                if(value === -1){
-                    return {
-                        done: true,
-                        value: undefined
-                    }
-                }else{
-                    return {
-                        done: false,
-                        value: value
-                    };
-                }
-            }
-        };
-    }
+    // [Symbol.iterator]() {
+    //     let context = this;
+    //     return {
+    //         next: function(){
+    //             let value = context.pop();
+    //             if(value === -1){
+    //                 return {
+    //                     done: true,
+    //                     value: undefined
+    //                 }
+    //             }else{
+    //                 return {
+    //                     done: false,
+    //                     value: value
+    //                 };
+    //             }
+    //         }
+    //     };
+    // }
 }
 
 module.exports = {
     Stack: Stack
 };
 
+
+
+
+Stack.prototype[Symbol.iterator] = function(){
+    return {
+        next: function(){
+            console.log('next');
+            return {
+                done: true,
+                value: 1
+            }
+        }
+    }
+}
 const stack = new Stack();
 stack.push(1);
 stack.push(2);
 stack.push(13);
 stack.push(14);
 
-
 for(let item of stack){
     console.log(item);
 }
+
+console.log(Symbol().valueOf());
+

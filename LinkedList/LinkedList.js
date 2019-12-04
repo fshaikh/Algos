@@ -24,7 +24,7 @@ class LinkedList {
 
     print(){
         let temp = this.head;
-        while(temp.next != null){
+        while(temp != null){
             console.log(temp.value);
             temp = temp.next;
         }
@@ -59,13 +59,18 @@ class LinkedList {
     }
 }
 
-let ll = new LinkedList();
-ll
-  .add(4)
-  .add(3)
-  .add(2)
-  .add(1)
-  .hasLoop();
-// const resp = ll.addWithLoop([4,3,2,1])
-//                .hasLoop();
-console.log(resp);
+module.exports = {
+    LinkedList,
+    Node
+}
+
+// let ll = new LinkedList();
+// ll
+//   .add(4)
+//   .add(3)
+//   .add(2)
+//   .add(1)
+//   .hasLoop();
+// // const resp = ll.addWithLoop([4,3,2,1])
+// //                .hasLoop();
+// console.log(resp);
