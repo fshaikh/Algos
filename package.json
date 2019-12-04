@@ -1,0 +1,27 @@
+{
+  "name": "algos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "D": "^1.0.0",
+    "eslint": "^5.16.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  },
+  "scripts": {
+    "test": "mocha --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fshaikh/Algos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fshaikh/Algos/issues"
+  },
+  "homepage": "https://github.com/fshaikh/Algos#readme"
+}

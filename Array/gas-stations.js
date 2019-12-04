@@ -42,3 +42,7 @@ const getStartGasStation = (gasArray, distanceArray) => {
 };
 
 console.log(getStartGasStation([4,6,7,4],[6,5,3,5]))
+
+
+
+

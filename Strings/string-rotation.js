@@ -15,3 +15,4 @@ const isRotated = (originalString, rotatedString) => {
     return composedString.includes(rotatedString);
 };
 console.log(isRotated('geeksforgeeksgeeksforgeeks','geeksgeeksfor'));
+

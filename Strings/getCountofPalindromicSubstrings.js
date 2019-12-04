@@ -66,4 +66,4 @@ const getLongestPalindrome = (s) => {
     return longestPalindrome;
 }
 
-console.log(getCountofPalindromicSubstrings('rfkqyuqfjkxy').count)
+console.log(getLongestPalindrome('abac'))

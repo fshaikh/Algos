@@ -1,0 +1,300 @@
+[
+    {
+        "time": 1290,
+        "distance": 7881.458989221741,
+        "steps": [
+            {
+                "mode": "WALK",
+                "provider": null,
+                "distance": 415.197,
+                "time": 298,
+                "departureTime": "2019-06-26T13:48:00Z",
+                "arrivalTime": "2019-06-26T13:52:58Z",
+                "points": "eur_IwfjpA`LKT?UtHE|@mA@",
+                "instructions": [
+                    {
+                        "distance": 244.833,
+                        "heading": 179.03,
+                        "sign": 0,
+                        "interval": [
+                            0,
+                            2
+                        ],
+                        "text": "Continue onto Beusselstraße",
+                        "time": 176279,
+                        "street_name": "Beusselstraße"
+                    },
+                    {
+                        "distance": 126.912,
+                        "sign": 2,
+                        "interval": [
+                            2,
+                            4
+                        ],
+                        "text": "Turn right onto Huttenstraße",
+                        "time": 91375,
+                        "street_name": "Huttenstraße"
+                    },
+                    {
+                        "distance": 43.452,
+                        "sign": 2,
+                        "interval": [
+                            4,
+                            5
+                        ],
+                        "text": "Turn right onto Rostocker Straße",
+                        "time": 31285,
+                        "street_name": "Rostocker Straße"
+                    },
+                    {
+                        "distance": 0,
+                        "sign": 10,
+                        "interval": [
+                            5,
+                            6
+                        ],
+                        "text": "0:7",
+                        "time": 0,
+                        "street_name": ""
+                    }
+                ],
+                "from": {
+                    "name": "Beusselstraße",
+                    "location": [
+                        13.328608473184817,
+                        52.52963186122857
+                    ]
+                },
+                "to": {
+                    "name": "Rostocker Straße",
+                    "location": [
+                        13.326791080734878,
+                        52.52796365241425
+                    ]
+                },
+                "details": null
+            },
+            {
+                "vehicleId": "WDD2462421J523181",
+                "mode": "DRIVE",
+                "provider": "car2go",
+                "distance": 7466.262,
+                "time": 992,
+                "departureTime": "2019-06-26T13:52:58Z",
+                "arrivalTime": "2019-06-26T14:09:30Z",
+                "points": "wjr_Im{ipAlAAD}@j@oHHeBpDm|@B_@d@AhA[VEGi@Cy@NiBZoFXwDh@yJzBy^BSR_@XqE~Cqg@RmFTcDBe@SYMg@Qy@Si@cHo\\M{Aa@gCoAqGoD_Qq@wBaEoRYo@y@yDsBmK[}BWkAQa@i@kCa@uAqBcKSgBu@}DIQnOmSXG^e@lA_ATQKoAi@wE}BiQaBcN}A}JuAoJ]cO@eACgB[cNFyAnCeYp@iGf@}Dd@mErC{ONo@f@yAzBkEn@aB~@uC`AqDh@wBpAqEb@kAoBmCgCaDs@}@dBkDTc@NTjB|BAPM\\Zd@",
+                "instructions": [
+                    {
+                        "distance": 43.452,
+                        "heading": 178.48,
+                        "sign": 0,
+                        "lanes": [],
+                        "interval": [
+                            0,
+                            1
+                        ],
+                        "text": "Continue onto Rostocker Straße",
+                        "time": 31285,
+                        "street_name": "Rostocker Straße"
+                    },
+                    {
+                        "distance": 844.762,
+                        "sign": -2,
+                        "lanes": [],
+                        "interval": [
+                            1,
+                            6
+                        ],
+                        "text": "Turn left onto Huttenstraße",
+                        "time": 67567,
+                        "street_name": "Huttenstraße"
+                    },
+                    {
+                        "distance": 77.211,
+                        "sign": 2,
+                        "lanes": [],
+                        "interval": [
+                            6,
+                            9
+                        ],
+                        "text": "Turn right onto Thusnelda-Allee",
+                        "time": 6174,
+                        "street_name": "Thusnelda-Allee"
+                    },
+                    {
+                        "distance": 706.803,
+                        "sign": -2,
+                        "lanes": [],
+                        "interval": [
+                            9,
+                            17
+                        ],
+                        "text": "Turn left onto Alt-Moabit",
+                        "time": 56531,
+                        "street_name": "Alt-Moabit"
+                    },
+                    {
+                        "distance": 686.541,
+                        "sign": 1,
+                        "lanes": [],
+                        "interval": [
+                            17,
+                            23
+                        ],
+                        "text": "Turn slight right onto Alt-Moabit",
+                        "time": 54919,
+                        "street_name": "Alt-Moabit"
+                    },
+                    {
+                        "distance": 1798.3,
+                        "sign": -2,
+                        "lanes": [
+                            {
+                                "valid": true,
+                                "direction": "left"
+                            },
+                            {
+                                "valid": false,
+                                "direction": "none"
+                            }
+                        ],
+                        "interval": [
+                            23,
+                            46
+                        ],
+                        "text": "Turn left onto Invalidenstraße",
+                        "time": 143839,
+                        "street_name": "Invalidenstraße"
+                    },
+                    {
+                        "distance": 466.226,
+                        "sign": 2,
+                        "lanes": [
+                            {
+                                "valid": false,
+                                "direction": "through"
+                            },
+                            {
+                                "valid": true,
+                                "direction": "through;right"
+                            }
+                        ],
+                        "interval": [
+                            46,
+                            51
+                        ],
+                        "text": "Turn right onto Chausseestraße",
+                        "time": 37294,
+                        "street_name": "Chausseestraße"
+                    },
+                    {
+                        "distance": 2412.507,
+                        "sign": -2,
+                        "lanes": [],
+                        "interval": [
+                            51,
+                            76
+                        ],
+                        "text": "Turn left onto Torstraße",
+                        "time": 192979,
+                        "street_name": "Torstraße"
+                    },
+                    {
+                        "distance": 208.1,
+                        "sign": -2,
+                        "lanes": [
+                            {
+                                "valid": true,
+                                "direction": "left"
+                            },
+                            {
+                                "valid": true,
+                                "direction": "left"
+                            },
+                            {
+                                "valid": false,
+                                "direction": "through"
+                            },
+                            {
+                                "valid": false,
+                                "direction": "through"
+                            }
+                        ],
+                        "interval": [
+                            76,
+                            79
+                        ],
+                        "text": "Turn left onto Otto-Braun-Straße, B 2",
+                        "time": 16645,
+                        "street_name": "Otto-Braun-Straße, B 2"
+                    },
+                    {
+                        "distance": 98.511,
+                        "sign": 2,
+                        "lanes": [],
+                        "interval": [
+                            79,
+                            81
+                        ],
+                        "text": "Turn right onto Barnimstraße",
+                        "time": 14184,
+                        "street_name": "Barnimstraße"
+                    },
+                    {
+                        "distance": 85.108,
+                        "sign": 2,
+                        "lanes": [],
+                        "interval": [
+                            81,
+                            83
+                        ],
+                        "text": "Turn right onto Pauline-Staegemann-Straße",
+                        "time": 12255,
+                        "street_name": "Pauline-Staegemann-Straße"
+                    },
+                    {
+                        "distance": 38.74,
+                        "sign": 2,
+                        "lanes": [],
+                        "interval": [
+                            83,
+                            86
+                        ],
+                        "text": "Turn right onto Pauline-Staegemann-Straße",
+                        "time": 27893,
+                        "street_name": "Pauline-Staegemann-Straße"
+                    },
+                    {
+                        "distance": 0,
+                        "sign": 10,
+                        "lanes": [],
+                        "interval": [
+                            86,
+                            87
+                        ],
+                        "text": "0:16",
+                        "time": 0,
+                        "street_name": ""
+                    }
+                ],
+                "from": {
+                    "name": "Rostocker Straße",
+                    "location": [
+                        13.326791080734878,
+                        52.52796365241425
+                    ]
+                },
+                "to": {
+                    "name": "Pauline-Staegemann-Straße",
+                    "location": [
+                        13.421655216671457,
+                        52.52519964428849
+                    ]
+                },
+                "details": null
+            }
+        ],
+        "delay": null,
+        "segments": []
+    }
+]

@@ -6,6 +6,7 @@ class Node {
         this.left = null;
         this.right = null;
         this.value = value;
+        this.depth = 1;
     }
 }
 
@@ -24,9 +25,9 @@ class BinaryTree {
         if(node == null){
             return;
         }
-        this.inOrderCore(node.left);
+        this.inOrderCore(node.left,array);
         array.push(node.value);
-        this.inOrderCore(node.right);
+        this.inOrderCore(node.right,array);
     }
 
     /**
@@ -49,9 +50,11 @@ class BinaryTree {
             // Add node's children to  the queue
             if(node.left != null){
                 queue.enqueue(node.left);
+                node.left.depth = node.depth + 1;
             }
             if(node.right != null){
                 queue.enqueue(node.right);
+                node.right.depth = node.depth + 1;
             }
         }
         return array;
@@ -109,6 +112,10 @@ class BinaryTree {
     
 }
 
+module.exports= {
+    Node,
+    BinaryTree
+}
 let tree = new BinaryTree();
 tree.head = new Node(10);
 tree.head.left = new Node(8);
@@ -120,7 +127,7 @@ tree.head.right.right = new Node(7);
 tree.head.left.left.left = new Node(9);
 
 
-console.log(tree.doZigZagTraversal());
+// console.log(tree.doZigZagTraversal());
 
 
 // Algo:
