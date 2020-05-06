@@ -53,6 +53,6 @@ queue.enqueue(1);
 queue.enqueue(3);
 
 
-for(let value of queue){
-    console.log(value)
-}
+// for(let value of queue){
+//     console.log(value)
+// }

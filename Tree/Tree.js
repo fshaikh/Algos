@@ -24,9 +24,9 @@ class BinaryTree {
         if(node == null){
             return;
         }
-        this.inOrderCore(node.left);
+        this.inOrderCore(node.left,array);
         array.push(node.value);
-        this.inOrderCore(node.right);
+        this.inOrderCore(node.right,array);
     }
 
     /**
@@ -108,7 +108,10 @@ class BinaryTree {
     }
     
 }
-
+module.exports = {
+    Node: Node,
+    BinaryTree: BinaryTree
+}
 let tree = new BinaryTree();
 tree.head = new Node(10);
 tree.head.left = new Node(8);
@@ -120,7 +123,7 @@ tree.head.right.right = new Node(7);
 tree.head.left.left.left = new Node(9);
 
 
-console.log(tree.doZigZagTraversal());
+// console.log(tree.doZigZagTraversal());
 
 
 // Algo:

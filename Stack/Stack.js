@@ -64,6 +64,6 @@ stack.push(13);
 stack.push(14);
 
 
-for(let item of stack){
-    console.log(item);
-}
+// for(let item of stack){
+//     console.log(item);
+// }
