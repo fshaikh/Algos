@@ -1,55 +1,77 @@
+
 /**
- * Given a binary tree, return path of a node from root to the node
+ * Given a binary tree ,Given a binary tree, return all root-to-leaf paths.
+ * Note: A leaf is a node with no children.
+
+Example:
+
+Input:
+
+   1
+ /   \
+2     3
+ \
+  5
+
+Output: ["1->2->5", "1->3"]
+
+Explanation: All root-to-leaf paths are: 1->2->5, 1->3
  */
-class Node {
-    constructor(value){
-        this.value = value;
-        this.left = null;
-        this.right = null;
+const BinaryTree = require('./Tree').BinaryTree;
+const Node = require('./Tree').Node
+const Queue = require('../Queue/Queue').Queue;
+
+
+
+ var binaryTreePaths = function(root) {
+    if(root == null){
+        return []
     }
+    const paths = [];
+    const queue = new Queue();
+    const pathMap = new Map();
+    queue.enqueue(root);
+    pathMap.set(root, null);
+    
+    while(!queue.isEmpty()){
+        const node = queue.dequeue();
+        if(isLeafNode(node)){
+            // construct the path
+            paths.push(getNodePath(node,pathMap));
+            continue;
+        }
+        if(node.left !== null){
+            queue.enqueue(node.left);
+            pathMap.set(node.left, node)
+        }
+        if(node.right !== null){
+            queue.enqueue(node.right);
+            pathMap.set(node.right, node)
+        }
+    }
+    
+    return paths;
+};
 
-
+function isLeafNode(node){
+    return node.left == null & node.right == null;
 }
 
-class BinaryTree{
-    constructor(){
-        this.head = null;
+function getNodePath(node, pathMap){
+    let path = node.value;
+    let m = pathMap.get(node);
+    while(m !== null){
+        path = m.value + '->' + path;
+        m = pathMap.get(m)
     }
-
-    getNodePath(nodeValue){
-        const path = [];
-        this.getNodePathCore(this.head,path,nodeValue)
-        return path;
-    }
-
-    getNodePathCore(node,path,target){
-        if(node == null){
-            return;
-        }
-        path.push(node.value);
-        if(node.value === target){
-            return true;
-        }
-        let status = this.getNodePathCore(node.left,path,target);
-        if(status){
-            return true;
-        }
-        status = this.getNodePathCore(node.right,path,target);
-        if(status){
-            return true;
-        }
-    }
+    return path.toString();
 }
 
-let tree = new BinaryTree();
-tree.head = new Node(10);
-tree.head.left = new Node(8);
-tree.head.right = new Node(2);
-tree.head.left.left = new Node(3);
-tree.head.left.right = new Node(5);
-tree.head.right.left = new Node(6);
-tree.head.right.right = new Node(7);
-tree.head.left.left.left = new Node(9);
-
-console.log(tree.getNodePath(5))
-console.log(tree.getNodePath(3))
+ const bt = new BinaryTree();
+ bt.head = new Node(37);
+ bt.head.left = new Node(-34);
+ bt.head.right = new Node(-34);
+ bt.head.left.right = new Node(-100);
+ bt.head.right.left = new Node(-100);
+ bt.head.right.right = new Node(48);
+ console.log(binaryTreePaths(bt.head));

@@ -1,7 +1,8 @@
 function binarySearch(array, target){
     let low = 0,high = array.length - 1,mid;
-    while(low <= high){
-        mid = Math.floor((high + low) / 2);
+    while(low < high){
+        // mid = Math.floor((high + low) / 2);
+        mid = low + (high - low) / 2;
         if(array[mid] === target){
             return true;
         }
@@ -9,10 +10,10 @@ function binarySearch(array, target){
             low = mid + 1;
             
         }else{
-            high = mid-1;
+            high = mid;
         }
     }
     return false;
 }
 
-console.log(binarySearch([1,2,3,4,5],100));
+console.log(binarySearch([1,2,3,4,5],5));

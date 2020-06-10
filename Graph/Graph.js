@@ -1,4 +1,5 @@
 const Queue = require('../Queue/Queue').Queue;
+const Stack = require('../Stack/Stack').Stack;
 /**
  * Graph representation using adjacent list
  */
@@ -103,6 +104,30 @@ class Graph {
              this.doDFSCore(adjacentNodes[i],dfsNodes,visited);
          }
      }
+
+     doDFSIterative() {
+        const stack = new Stack();
+        const visited = new Set();
+        let dfsNodes = [];
+        for (var key of this._adjacentList.keys()) {
+            stack.push(key);
+            visited.add(key);
+            break;
+        }
+        while(!stack.isEmpty()){
+            const v = stack.peek();
+            stack.pop();
+            const adjacentVertices = this._adjacentList.get(v);
+            adjacentVertices.forEach(adjV => {
+                if(!visited.has(adjV)){
+                    visited.add(adjV);
+                    stack.push(adjV)
+                }
+            });
+            dfsNodes.push(v);
+        }
+        return dfsNodes;
+    }
 
      //#region Topological Sort
 
@@ -210,15 +235,15 @@ class Graph {
  }
 
  const graph = new Graph();
- graph.addVertex('t');
- graph.addVertex('f');
- graph.addVertex('w');
- graph.addVertex('e');
- graph.addVertex('r');
- graph.addEdge('e','r');
- graph.addEdge('r','t');
- graph.addEdge('w','e');
- graph.addEdge('t','f');
+//  graph.addVertex('t');
+//  graph.addVertex('f');
+//  graph.addVertex('w');
+//  graph.addVertex('e');
+//  graph.addVertex('r');
+//  graph.addEdge('e','r');
+//  graph.addEdge('r','t');
+//  graph.addEdge('w','e');
+//  graph.addEdge('t','f');
 //  graph.addVertex(1);
 //  graph.addVertex(2);
 //  graph.addVertex(3);
@@ -255,7 +280,17 @@ class Graph {
 //  graph.addEdge(8,2);
 //  graph.addEdge(8,5);
 //  graph.addEdge(8,7);
-
-// console.log(graph.doDFS());
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+graph.addVertex('E');
+graph.addVertex('F');
+graph.addEdge('A', 'B');
+graph.addEdge('B', 'C');
+graph.addEdge('A', 'D');
+graph.addEdge('D', 'E');
+graph.addEdge('E', 'F');
+console.log(graph.doDFSIterative());
 // console.log(graph.doTopologicalSort());
-console.log(graph.doTopologicalSortUsingKahn());
+// console.log(graph.doTopologicalSortUsingKahn());

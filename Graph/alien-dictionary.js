@@ -73,7 +73,9 @@ There may be multiple valid order of letters, return any one of them is fine.
 };
 
 console.log(alienOrder(
-  ["ri","xz","qxf","jhsguaw","dztqrbwbm","dhdqfb","jdv","fcgfsilnb","ooby"]
+  ["ccda", "ccbk", "cd", "a", "ab"]
   
   ));
   // ["wxqkj","whqg","cckgh","cdxg","cdxdt","cdht","ktgxt","ktgch","ktdw","ktdc","jqw","jmc","jmg"]
+  // ["ri","xz","qxf","jhsguaw","dztqrbwbm","dhdqfb","jdv","fcgfsilnb","ooby"]
+  // ["ccda", "ccb", "cd", "a", "ab", "d"]

@@ -8,7 +8,8 @@
  * How is it useful fin 'k' least/minimjm categories of problems:
  * Consider a problem: Given an array of numbers , find 'k' smallest numbers. For eg: [1,2,4,3,5,6], k = 3, o/p => 2,1,3
  * This is a very common sub-problem in many algorithms and various solutions exists like sort, max heap etc.
- * Since we need 'k' smallest numbers, we can run Selection Sort 'k' number of times and stop. Then we read the first 'k' elements
+ * Since we need 'k' smallest numbers, we can run Selection Sort 'k' number of times and stop.
+ *  Then we read the first 'k' elements
  * 
  */
 

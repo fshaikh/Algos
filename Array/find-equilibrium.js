@@ -19,11 +19,14 @@ const getEquilibriumIndex = (array) => {
     let leftSum = 0;
     for(let i=0;i<length;i++){
         sum = sum - array[i];
+        
         if(sum === leftSum){
+            console.log(sum, leftSum)
             equilibriumIndex = i;
             break;
         }
         leftSum += array[i];
+        console.log(sum, leftSum)
     }
     return equilibriumIndex;
 }

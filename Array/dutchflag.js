@@ -28,23 +28,25 @@ Could you come up with a one-pass algorithm using only constant space?
 var sortColors = function(nums) {
     let current = 0, pointerZero = 0, pointerTwo = nums.length - 1;
     while(current <= pointerTwo){
-        if(nums[current] === 0){
-            // swap and increment both current and pointerzero
-            let temp = nums[pointerZero];
-            nums[pointerZero] = nums[curent];
-            nums[current] = temp;
+        const currentValue = nums[current];
+        if(currentValue === 0){
+            swap(nums,current,pointerZero);
             current++;
             pointerZero++;
-        }else if(nums[current] === 2){
-            let temp = nums[current];
-            nums[pointerTwo] = nums[temp];
-            nums[current] = temp;
+        }else if(currentValue === 2){
+            swap(nums,current,pointerTwo);
             pointerTwo--;
         }else{
             current++;
         }
     }
 };
-const nums = [1,2,0,1,2,0,1];
+
+function swap(array,i,j){
+    let temp = array[j];
+    array[j] = array[i];
+    array[i] = temp;
+}
+const nums = [1,2,0,1,2,0,1,2,0,0,1,1,2,1];
 sortColors(nums);
 console.log(nums); // [0,0,1,1,1,2,2]

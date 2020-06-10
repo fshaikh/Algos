@@ -75,4 +75,41 @@ function getFirstNonMatchingPair(word1,word2){
     return {letter1: '1',letter2: '1'}
 }
 
+var isAlienSorted2 = function(words, order) {
+    const orderMap = new Map();
+    for(let i=0;i< order.length;i++){
+        orderMap.set(order[i],i+1)
+    };
+    orderMap.set('',0);
+    for(let i=0;i<words.length;i++){
+        if(i === words.length - 1){
+            continue;
+        }
+        const firstWord = words[i], secondWord = words[i+1];
+        const isSorted = isSortedWords(firstWord,secondWord,orderMap);
+        if(!isSorted){
+            return false;
+        }
+    }
+    return true;
+};
+
+function isSortedWords(firstWord,secondWord,orderMap){
+    let firstWordIndex = 0, secondWordIndex = 0;
+    while(firstWordIndex < firstWord.length && secondWordIndex < secondWord.length){
+        const letter1 = firstWord[firstWordIndex++];
+        const letter2 = secondWord[secondWordIndex++];
+        if(orderMap.get(letter1) > orderMap.get(letter2)){
+            return false;
+        }
+        if(orderMap.get(letter1) < orderMap.get(letter2)){
+            return true;
+        }
+    }
+    if(firstWordIndex < firstWord.length){
+        return false
+    }
+    return true;
+}
+
 console.log(isAlienSorted(["apple","app"],'abcdefghijklmnopqrstuvwxyz'));
