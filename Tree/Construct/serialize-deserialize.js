@@ -33,8 +33,8 @@ function deserialize(serializedTreeArray){
             return null;
         }
         const node = new Node(serializedTreeArray[index++]);
-        node.left = deserializeCore(node.left);
-        node.right = deserializeCore(node.right);
+        node.left = deserializeCore();
+        node.right = deserializeCore();
 
         return node;
     }

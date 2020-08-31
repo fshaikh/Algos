@@ -33,7 +33,7 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
  // Approach 1 - Brute force 
  // Approach 2- Sliding window
 
- // Approach 1 - Brute Force
+ //#region Approach 1 - Brute Force
  /**
  * @param {string} s
  * @param {string} p
@@ -72,7 +72,7 @@ var findAnagrams = function(s, p) {
       return !alphabetCount.some(i => i !== 0);
   }
 
- // Approach 2- Sliding window
+ //#endregion Approach 2- Sliding window
  var findAnagrams2 = function(s,p) {
      const sAlphabetCount = [], pAlphabetCount = [], startIndices = [];
      for(let i=0;i<26;i++){

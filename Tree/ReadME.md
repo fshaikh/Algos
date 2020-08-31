@@ -9,6 +9,7 @@ Determine levels for each node in a tree
 Height of a binary tree (max depth )
 Diameter of a binary tree
 Minimum depth of a binary tree
+
 # Path
 Given a node, find the path of the node from root to the node
 

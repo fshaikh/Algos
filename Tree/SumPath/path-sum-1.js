@@ -1,5 +1,6 @@
 /**
- * Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+ * Given a binary tree and a sum, determine if the tree has a root-to-leaf path
+ * such that adding up all the values along the path equals the given sum.
 
 Note: A leaf is a node with no children.
 
@@ -106,7 +107,7 @@ function hasPathWithSumCore(node,sum,total){
 }
  //#endregion Solution 2 - Recursive
 
-
+//#region Fast Approach
  /**
   This problem is a variation of the above problem. Instead of returning a boolean, return count of all
   paths which add to a total
@@ -133,6 +134,7 @@ function hasPathWithSumCore(node,sum,total){
      getPathCountsWhichAddToSumCore(node.left,sum,total,callback)
      getPathCountsWhichAddToSumCore(node.right,sum,total,callback)
  }
+ //#endregion Fast Approach
 
  function isLeafNode(node){
      return node.left == null && node.right == null;

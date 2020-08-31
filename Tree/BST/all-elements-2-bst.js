@@ -12,7 +12,6 @@ var getAllElements = function(root1, root2) {
     getNodes(root1,list1);
     getNodes(root2,list2);
     return merge();
-    //return mergedList;
     
     function getNodes(node,array){
         if(node == null){

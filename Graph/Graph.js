@@ -1,5 +1,12 @@
 const Queue = require('../Queue/Queue').Queue;
 const Stack = require('../Stack/Stack').Stack;
+
+const SCCAlgo = {
+    Kosaraju: 1,
+    Tarjan: 2,
+    PathBased: 3
+};
+
 /**
  * Graph representation using adjacent list
  */
@@ -43,6 +50,10 @@ class Graph {
      getGraph(){
          return this._adjacentList;
      }
+
+     getAdjacentList() {
+        return this._adjacentList;
+    }
 
      /**
       * Breadth-first traversal of graph
@@ -228,6 +239,139 @@ class Graph {
         }
         return incomingDegree;
      }
+
+    // #region Transpose of a graph
+
+    /**
+     * Transpose of a graph using DFS. Time complexity: O(V+E)
+     */
+    transpose() {
+        let transposeGraph = new Graph();
+        let visited = new Set();
+
+        // do a modified DFS on the input graph
+        for (const node of this._adjacentList.keys()) {
+            this.doTransposeCore(node, transposeGraph, visited);
+        }
+        return transposeGraph;
+    }
+
+    doTransposeCore(node, transposeGraph, visited) {
+        if (visited.has(node)) {
+            return;
+        }
+        visited.add(node);
+        const adjacentNodes = this._adjacentList.get(node);
+        for (let index = 0; index < adjacentNodes.length; index++) {
+            const element = adjacentNodes[index];
+            transposeGraph.addEdge(element, node);
+            this.doTransposeCore(element, transposeGraph, visited);
+        }
+    }
+
+    /**
+     * Transpose of a graph iteratively. Time complexity: O(V2)
+     */
+    transposeIterative() {
+        const transposeGraph = new Graph();
+        for (const node of this._adjacentList.keys()) {
+            this._adjacentList.get(node).forEach(adjNode => {
+                transposeGraph.addVertexAndEdge(adjNode, node);
+            });
+        }
+        return transposeGraph;
+    }
+    // #endregion Transpose of a graph
+
+    // #region Strongly Connected Components
+
+    // #region Find all strongly connected components of a DAG
+    getSCC(algo) {
+        switch (algo) {
+            case SCCAlgo.Kosaraju:
+                return this.getSCCUsingKosaraju();
+            default:
+                return [];
+        }
+    }
+    // #region Kosaraju Algorithm
+    /**
+     * ALGO:
+     *  1. DFS on graph. Add the node in post-visit to stack
+     *  2. Transpose of graph
+     *  3. While stack is not empty
+     *       Pop
+     *       DFS from the popped node in transposed graph. DFS is one of the SCC
+     *       Add each SCC to result
+     *       
+     */
+    getSCCUsingKosaraju() {
+        const visited = new Set();
+        const stack = new Stack();
+
+        // Stores the list of strongly connected components. Each item 
+        // is a SCC (collection of vertices in a SCC)
+        const stronglyConnectedComponents = [];
+
+        // Kosaraju algorithm has 3 main steps:
+        // 1. Do a DFS on the graph. Store the visited vertex. Store the last finished vertex in a stack
+        for (const vertex of this._adjacentList.keys()) {
+            this.doDFSKosaraju1(vertex, visited, stack);
+        }
+
+        // 2. Transpose the graph
+        const transposedGraph = this.transposeIterative().getAdjacentList();
+
+        // 3. Do a DFS on the transposed graph. 
+        visited.clear();
+        while (!stack.isEmpty()) {
+            const vertex = stack.pop();
+            const scc = [];
+            // do a DFS on the transposed graph starting from the vertex
+            this.doDFSKosaraju2(transposedGraph, vertex, visited, scc);
+            if (scc.length > 0) {
+                stronglyConnectedComponents.push(scc);
+
+            }
+        }
+
+        return stronglyConnectedComponents;
+    }
+
+    doDFSKosaraju1(vertex, visited, stack) {
+        if (visited.has(vertex)) {
+            return;
+        }
+        visited.add(vertex);
+        const adjacentVertices = this._adjacentList.get(vertex);
+        for (let index = 0; index < adjacentVertices.length; index++) {
+            const adjacentVertex = adjacentVertices[index];
+            this.doDFSKosaraju1(adjacentVertex, visited, stack);
+        }
+        stack.push(vertex);
+    }
+
+    doDFSKosaraju2(graph, vertex, visited, scc) {
+        if (visited.has(vertex)) {
+            return;
+        }
+        visited.add(vertex);
+        const adjacentVertices = graph.get(vertex);
+        for (const adjacentVertex of adjacentVertices) {
+            this.doDFSKosaraju2(graph, adjacentVertex, visited, scc);
+        }
+        scc.push(vertex);
+    }
+
+    // #endregion Kosaraju Algorithm
+
+    // #region Tarjan Algorithm
+    // #endregion Tarjan Algorithm
+
+
+    // #endregion Find all strongly connected components of a DAG
+
+    // #endregion Strongly Connected Components
  }
 
  module.exports = {
@@ -280,17 +424,32 @@ class Graph {
 //  graph.addEdge(8,2);
 //  graph.addEdge(8,5);
 //  graph.addEdge(8,7);
-graph.addVertex('A');
-graph.addVertex('B');
-graph.addVertex('C');
-graph.addVertex('D');
-graph.addVertex('E');
-graph.addVertex('F');
-graph.addEdge('A', 'B');
-graph.addEdge('B', 'C');
-graph.addEdge('A', 'D');
-graph.addEdge('D', 'E');
-graph.addEdge('E', 'F');
-console.log(graph.doDFSIterative());
+// graph.addVertex('A');
+// graph.addVertex('B');
+// graph.addVertex('C');
+// graph.addVertex('D');
+// graph.addVertex('E');
+// graph.addVertex('F');
+// graph.addEdge('A', 'B');
+// graph.addEdge('B', 'C');
+// graph.addEdge('A', 'D');
+// graph.addEdge('D', 'E');
+// graph.addEdge('E', 'F');
+// console.log(graph.doDFSIterative());
 // console.log(graph.doTopologicalSort());
 // console.log(graph.doTopologicalSortUsingKahn());
+
+graph.addVertex(1);
+graph.addVertex(2);
+graph.addVertex(3);
+graph.addVertex(4);
+graph.addVertex(5);
+
+graph.addEdge(1, 2);
+graph.addEdge(2, 3);
+graph.addEdge(3, 1);
+graph.addEdge(4, 5);
+graph.addEdge(5, 4);
+graph.addEdge(2, 4);
+
+console.log(graph.getSCC(SCCAlgo.Kosaraju));

@@ -52,5 +52,5 @@ class BSTState {
  }
 
  const binaryTree = new BinaryTree();
- binaryTree.head = new 
+ // binaryTree.head = new 
  

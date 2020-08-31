@@ -154,16 +154,12 @@ class BinaryTree {
   }
   // #endregion Traversals
 
-  // #region BST-related
-
-  // #endregion BST-related
-
   //#region Tree Properties
   /**
    * Height of a binary tree is the number of nodes in the longest path from root to leaf
    */
   height() {
-    return heightCore(this.head);
+    return heightCore(this.head) - 1;
     function heightCore(node) {
       if (node == null) {
         // height of a binary tree is 0
@@ -171,7 +167,7 @@ class BinaryTree {
       }
       const leftHeight = heightCore(node.left);
       const rightHeight = heightCore(node.right);
-      return Math.max(leftHeight, rightHeight);
+      return 1 + Math.max(leftHeight, rightHeight);
     }
   }
 
@@ -199,7 +195,7 @@ class BinaryTree {
   }
 
   /**
-   * Diameter - Number of nodes in the longest path between any 2 nodes
+   * Diameter - Number of nodes in the longest path between any 2 nodes(leaves)
    */
   diameterOfBinaryTree() {
     const context = this;
@@ -207,7 +203,7 @@ class BinaryTree {
     // if path does not pass from root: diameter(left) + diameter(right)
     // diamter : max(lh + rh + 1, diameter(left)+diamter(right))
     // See this for explaination: https://www.youtube.com/watch?reload=9&v=ey7DYc9OANo
-    return diameter(root);
+    return d(this.head,0);
     function diameter(node) {
       if (node == null) {
         return 0;
@@ -220,6 +216,18 @@ class BinaryTree {
       const rightDiameter = diameter(node.right);
       const nonRootDiameter = Math.max(leftDiameter, rightDiameter);
       return Math.max(rootDiameter, nonRootDiameter);
+    }
+
+    function d(node,result){
+      if(node == null){
+        return 0;
+      }
+      const leftDiameter = d(node.left,result);
+      const rightDiameter = d(node.right,result);
+
+      const temp = Math.max(leftDiameter,rightDiameter) + 1;
+      const answer = Math.max(temp, leftDiameter + rightDiameter + 1);
+      return Math.max(answer,result);
     }
   }
   //#endregion Tree Properties
@@ -236,7 +244,7 @@ tree.head.left.left = new Node(1);
 tree.head.left.right = new Node(6);
 tree.head.right.left = new Node(23);
 tree.head.left.left.right = new Node(10);
-// console.log(tree.getNodesLevel());
+console.log(tree.height());
 
 // console.log(tree.doZigZagTraversal());
 

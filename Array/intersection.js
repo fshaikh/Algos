@@ -34,7 +34,7 @@ var intersection = function(nums1, nums2) {
 };
 
 /**
-Constraint: TC => O(N), SC => O(1)
+Constraint: TC => O(NLOGN), SC => O(1)
 Assume arrays are sorted
  */
 var intersection2 = function(nums1, nums2){

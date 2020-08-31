@@ -98,41 +98,29 @@ var removeDuplicates = function(S) {
  * @return {string}
  */
 var removeDuplicatesWithK = function(s, k) {
+    function Pair(count, ch){
+        this.count = count;
+        this.ch = ch;
+    }
+    
     const stack = new Stack();
-    const map = new Map();
     for(let i=0;i<s.length;i++){
-        const item = s[i];
-        const top = stack.peek();
-        if(top !== item){
-            stack.push(item);
-            map.set(item,1);
+        if(stack.isEmpty() || s[i] !== stack.peek().ch){
+            stack.push(new Pair(1, s[i]))
         }else{
-            let count = map.get(item);
-            // if(!map.has(item)){
-            //     map.set(item,1);
-            //     count = 1;
-            // }
-            console.log(count)
-            if(count + 1 === k){
-                while(count !== 0){
-                    stack.pop();
-                    count--;
-                    
-                }
-                // map.set(item, Math.abs(count - k));
-                //map.delete(item);
-            }else{
-                map.set(item,count+1);
-                stack.push(item);
+            if(++stack.peek().count === k){
+                stack.pop()
             }
         }
     }
-    console.log(map)
-    let result = '';
-    for(let s of stack){
-        result = s + result;
+    let str = '';
+    while(!stack.isEmpty()){
+        const pair = stack.pop();
+        for(let i=0;i<pair.count;i++){
+            str = pair.ch + str;
+        }
     }
-    return result;
+    return str;
 };
 console.log(removeDuplicatesWithK("dtpdtaaaaaaaaappppppppppppppppppppaaaaaaaaaaxxxxxxxxxxxxxxsssssssssjjjjjjjjjjjjjjjjjjjjxxxxxxxxxxxxxxxxxxxxsssssssjjjjjjjjjjjjjjjjjjjjssssxxxxxxatdwvvpctpggggggggggggggggggggajagglaaaaaaaaaaaaaaaaaaaa",20))
 

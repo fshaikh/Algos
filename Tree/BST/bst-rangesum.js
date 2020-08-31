@@ -12,7 +12,7 @@ function doRangeSumBSTCore(node,L,R,callback){
 
     if(node.val >= L && node.val <= R){        
         callback(node.val);
-    }if(L < node.val){
+    }if(node.val > L){
          doRangeSumBSTCore(node.left,L,R,callback);
     }if(node.val < R){
          doRangeSumBSTCore(node.right,L,R,callback);

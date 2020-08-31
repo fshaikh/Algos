@@ -24,8 +24,8 @@ Algorithm:
 12. 4 != 13,1 , go to left,  No left , so return null. Traverse right
 13. 1 = 1. so return 1. 4 gets 1, so returns 1
 14. 8 got non-null values from both left and right. So 8 is the LCA  =>>>>>  IMPORTANT
-15. Return 8 to 3.
-16. 3 now returns 8 as LCA
+15. Return 8 to 5.
+16. 5 now returns 8 as LCA
 
 Try to do the above exercise for LCA(8,1). You will see that we stop at 8 and don't traverse looking for 1. So this
 algorithm will only work if both nodes exist in the tree.

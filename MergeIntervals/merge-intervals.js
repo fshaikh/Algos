@@ -17,7 +17,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
  * @param {number[][]} intervals
  * @return {number[][]}
  * @description - 
- * 1. Sort the intervals by start time descending
+ * 1. Sort the intervals by start time ascending
  * 2. Add the first interval to output array
  * 3. Iterate intervals from 1 to end
  * 4.    Check if interval overlaps with the last item of output array [1,3] , [2,4]
@@ -25,7 +25,9 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
  * 6.       else, modify the end time of last item of output array with end time of interval item
  * TC: O(NLOGN), SC: O(N)
  * 
- * This reuses two concepts in intervals merge types of problems: sort by start time, find if two intervals overlap
+ * This reuses two concepts in intervals merge types of problems:
+ *     sort by start time
+ *     find if two intervals overlap
  */
 var merge = function(intervals) {
     if(intervals.length === 0){
@@ -54,17 +56,3 @@ function isOverlappingIntervals(interval1, interval2){
     return low <= high;
 }
 
-function dd(){
-    const afpsStatus = [
-        {
-            "afp": "forter",
-            "status": true
-          },
-          {
-            "afp": "riskified",
-            "status": true
-          }
-    ];
-    return afpsStatus.some(afpStatus => afpStatus.afp === 'riskified' && afpStatus.status);
-}
-console.log(dd())

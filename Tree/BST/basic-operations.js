@@ -52,7 +52,7 @@ function getSuccessor(root,node){
         successor = getSuccessorWhenRightPresent(node);
     }else{
         // We are following Method 2 - Start search from root, since we do not store parent pointers.
-        // Walk down from the root. every time node is < root, successor is root
+        // Walk down from the root. every time node < root, successor is root
         let temp = root;
         while(temp != null){
             if(node.value < temp.value){
@@ -118,6 +118,37 @@ function getPredessorWhenLeftPresent(node){
 }
 //#endregion Successor
 
+function getNodeSuccessor(root, node){
+    if(node.right !== null){
+        return getNodeSuccesorWhenRightPresent(node);
+    }else{
+        return getNodeSuccessorWhenRightNotPresent(root,node);
+    }
+
+    function getNodeSuccesorWhenRightPresent(node){
+        let temp = node.right,successor;
+        while(temp != null){
+            temp = temp.left;
+            successor = temp;
+        }
+        return successor;
+    }
+
+    function getNodeSuccessorWhenRightNotPresent(){
+        let temp = root, successor;
+        while(temp != null){
+            if(temp.value > node.value){
+                successor = temp;
+                temp = temp.left;
+            }else if(temp.value < node.value){
+                temp = temp.right;
+            }else{
+                break;
+            }
+        }
+        return successor;
+    }
+}
 module.exports = {
     getSuccessor,
     getPredecessor

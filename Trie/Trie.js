@@ -1,11 +1,11 @@
-const TrieNode_1 = require("./TrieNode");
+const TrieNode = require("./TrieNode").TrieNode;
 /**
  * Trie data structure
  * https://www.youtube.com/watch?v=CX777rfuZtM
  */
 class Trie {
     constructor() {
-        this.rootNode = new TrieNode_1.default('');
+        this.rootNode = new TrieNode('');
     }
     insert(word) {
         const wordLength = word.length;
@@ -18,7 +18,7 @@ class Trie {
             }
             else {
                 // new leter , insert i
-                var newNode = new TrieNode_1.default(letter);
+                var newNode = new TrieNode(letter);
                 node.children[letter] = newNode;
                 node = newNode;
             }
@@ -40,4 +40,10 @@ class Trie {
         return true;
     }
 }
-exports.default = Trie;
+
+const trie = new Trie();
+trie.insert('foo');
+trie.insert('foot')
+trie.insert('football');
+
+console.log(trie.find('footb'));

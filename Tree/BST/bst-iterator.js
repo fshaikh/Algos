@@ -105,37 +105,37 @@ You may assume that next() call will always be valid, that is, there will be at 
 /**
  * @param {TreeNode} root
  */
-const Stack = require('../Stack/Stack').Stack;
-var BSTIterator = function(root) {
-    this.stack = new Stack();
-    this.walkLeftSubtree(root);
-};
-BSTIterator.prototype.walkLeftSubtree = function(node){
-    while(node != null){
-        this.stack.push(node);
-        node = node.left;
-    }
-}
-/**
- * @return the next smallest number
- * @return {number}
- */
-BSTIterator.prototype.next = function() {
-   const nextElement = this.stack.pop();
-   if(nextElement.right !== null){
-       this.walkLeftSubtree(nextElement.right);
-   }
+// const Stack = require('../Stack/Stack').Stack;
+// var BSTIterator = function(root) {
+//     this.stack = new Stack();
+//     this.walkLeftSubtree(root);
+// };
+// BSTIterator.prototype.walkLeftSubtree = function(node){
+//     while(node != null){
+//         this.stack.push(node);
+//         node = node.left;
+//     }
+// }
+// /**
+//  * @return the next smallest number
+//  * @return {number}
+//  */
+// BSTIterator.prototype.next = function() {
+//    const nextElement = this.stack.pop();
+//    if(nextElement.right !== null){
+//        this.walkLeftSubtree(nextElement.right);
+//    }
     
-   return nextElement.val;
-};
+//    return nextElement.val;
+// };
 
-/**
- * @return whether we have a next smallest number
- * @return {boolean}
- */
-BSTIterator.prototype.hasNext = function() {
-    return !this.stack.isEmpty();
-};
+// /**
+//  * @return whether we have a next smallest number
+//  * @return {boolean}
+//  */
+// BSTIterator.prototype.hasNext = function() {
+//     return !this.stack.isEmpty();
+// };
 
 /** 
  * Your BSTIterator object will be instantiated and called as such:
@@ -144,3 +144,23 @@ BSTIterator.prototype.hasNext = function() {
  * var param_2 = obj.hasNext()
  */
  // #endregion Solution 2
+
+
+
+ var NestedIterator = function(nestedList) {
+    this.flattenedList = [];
+    this.flatten(nestedList);
+    console.log(this.flattenedList)
+};
+
+NestedIterator.prototoype.flatten = function(list){
+    if(typeof list === 'number'){
+        this.flattenedList.push(list);
+        return;
+    }
+    for(let i=0;i<list.length;i++){
+        const value = list[i];
+        this.flatten(value);
+    }
+}
+const v = new NestedIterator([1,[1,1]]);
